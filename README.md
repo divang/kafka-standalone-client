@@ -17,6 +17,6 @@ Step to use this kafka simple client
 - mvn clean install
 - cd target
 - To run stand alone Consumer, it will connect to localhost:9092 broker
-java -cp .:kafka-standalone-client-0.0.1-SNAPSHOT.jar  com.training.kafka.basic.consumer.ConsumerStandalone
+		java -cp .:kafka-standalone-client-0.0.1-SNAPSHOT.jar  com.training.kafka.basic.consumer.ConsumerStandalone
 - To run stand  alone Producer, it will connect to localhost:9092 broker
-java -cp .:kafka-standalone-client-0.0.1-SNAPSHOT.jar  com.training.kafka.basic.producer.ProducerStandalone
+		java -cp .:kafka-standalone-client-0.0.1-SNAPSHOT.jar  com.training.kafka.basic.producer.ProducerStandalone
