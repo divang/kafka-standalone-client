@@ -34,7 +34,7 @@ public class ProducerStandalone {
 
 			producer = new KafkaProducer<String, String>(configs);
 			// Topic name
-			String topic = "transcations";
+			String topic = "transactions";
 
 			while (true) {
 				JSONObject transactionValue = getTransactionRecord();
@@ -46,7 +46,7 @@ public class ProducerStandalone {
 				logger.info("Complete record info {}", record);
 
 				producer.send(record);
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 				logger.info(
 						"------------ Record inserted to kafka -----------");
 			}
@@ -58,19 +58,20 @@ public class ProducerStandalone {
 	}
 
 	private static int countPostfix = 1;
+	private static Random tarnsactionAmountGenerator = new Random(1000);
 
 	@SuppressWarnings("unchecked")
 	private static JSONObject getTransactionRecord() {
 		String accountIdPrefix = "BANK_XYZ_";
 		String accountNamePrefix = "USER_";
-		Random tarnsactionAmountGenerator = new Random(1000);
+
 		JSONObject transactionValue = new JSONObject();
 		String accountId = accountIdPrefix + countPostfix;
 		String userName = accountNamePrefix + countPostfix;
 		transactionValue.put("AccountId", accountId);
 		transactionValue.put("AccountHolderName", userName);
 		transactionValue.put("Amount",
-				tarnsactionAmountGenerator.nextInt(100000));
+				tarnsactionAmountGenerator.nextInt(15000));
 		transactionValue.put("transactionTime", System.currentTimeMillis());
 		countPostfix++;
 		return transactionValue;
